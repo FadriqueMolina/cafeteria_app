@@ -69,21 +69,55 @@ class RegisterScreen extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 20),
-                  //Boton iniciar sesion
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_passwordController.text ==
-                          _confirmPasswordController.text) {
-                        if (_formKey.currentState!.validate()) {
-                          authProvider.login();
-                          Navigator.pushReplacementNamed(context, "/home");
-                        }
-                      } else {
-                        showSnackBar(context, AppStrings.passwordError);
-                      }
+                  //Boton iniciar sesion o progress indicator
+                  Consumer<AuthProvider>(
+                    builder: (context, authProvider, child) {
+                      return Column(
+                        children: [
+                          if (authProvider.isLoading)
+                            CircularProgressIndicator()
+                          else
+                            ElevatedButton(
+                              onPressed: () async {
+                                if (_passwordController.text ==
+                                    _confirmPasswordController.text) {
+                                  if (_formKey.currentState!.validate()) {
+                                    String email = _emailController.text;
+                                    String password = _passwordController.text;
+                                    await authProvider.register(
+                                      email,
+                                      password,
+                                    );
+                                    if (!context.mounted) {
+                                      throw Exception("Ocurrio un error");
+                                    }
+
+                                    if (authProvider.isAuthenticated) {
+                                      Navigator.pushReplacementNamed(
+                                        context,
+                                        "/home",
+                                      );
+                                    } else {
+                                      showSnackBar(
+                                        context,
+                                        authProvider.errorMessage,
+                                      );
+                                    }
+                                  }
+                                } else {
+                                  showSnackBar(
+                                    context,
+                                    AppStrings.passwordError,
+                                  );
+                                }
+                              },
+                              child: Text(AppStrings.registerButton),
+                            ),
+                        ],
+                      );
                     },
-                    child: Text(AppStrings.registerButton),
                   ),
+
                   SizedBox(height: 20),
                   //Texto registrarse
                   TextButton(
