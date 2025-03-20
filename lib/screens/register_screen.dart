@@ -1,3 +1,4 @@
+import 'package:cafeteria_app/utils/strings.dart';
 import 'package:cafeteria_app/widgets/my_textfield.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,9 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("Registro"))),
+      appBar: AppBar(
+        title: const Center(child: Text(AppStrings.registerTitle)),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -22,19 +25,22 @@ class RegisterScreen extends StatelessWidget {
             SizedBox(height: 20),
             //Correo
             MyTextfield(
-              labelText: "Correo electronico",
+              labelText: AppStrings.emailHint,
+              isObscured: false,
               textController: _emailController,
             ),
             SizedBox(height: 20),
             //Contraseña
             MyTextfield(
-              labelText: "Contraseña",
+              labelText: AppStrings.passwordHint,
+              isObscured: true,
               textController: _passwordController,
             ),
             SizedBox(height: 20),
             //Confirmar contraseña
             MyTextfield(
-              labelText: "Confirmar contraseña",
+              labelText: AppStrings.confirmPasswordHint,
+              isObscured: true,
               textController: _confirmPasswordController,
             ),
             SizedBox(height: 20),
@@ -49,7 +55,7 @@ class RegisterScreen extends StatelessWidget {
                   print("Las contraseñas no coinciden");
                 }
               },
-              child: Text("Iniciar sesion"),
+              child: Text(AppStrings.registerButton),
             ),
             SizedBox(height: 20),
             //Texto registrarse
@@ -57,7 +63,7 @@ class RegisterScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text("¿Ya tienes una cuenta? Inicia sesión"),
+              child: Text(AppStrings.haveAccount),
             ),
           ],
         ),

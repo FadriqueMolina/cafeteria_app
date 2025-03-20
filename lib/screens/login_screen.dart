@@ -1,3 +1,4 @@
+import 'package:cafeteria_app/utils/strings.dart';
 import 'package:cafeteria_app/widgets/my_textfield.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("Iniciar sesion"))),
+      appBar: AppBar(title: Center(child: Text(AppStrings.loginTitle))),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -20,13 +21,15 @@ class LoginScreen extends StatelessWidget {
             SizedBox(height: 20),
             //Correo
             MyTextfield(
-              labelText: "Correo electronico",
+              labelText: AppStrings.emailHint,
+              isObscured: false,
               textController: _emailController,
             ),
             SizedBox(height: 20),
             //Contraseña
             MyTextfield(
-              labelText: "Contraseña",
+              labelText: AppStrings.passwordHint,
+              isObscured: true,
               textController: _passwordController,
             ),
             SizedBox(height: 20),
@@ -36,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                 print("Username: ${_emailController.text}");
                 print("Password: ${_passwordController.text}");
               },
-              child: Text("Iniciar sesion"),
+              child: Text(AppStrings.loginButton),
             ),
             SizedBox(height: 20),
             //Texto registrarse
@@ -44,7 +47,7 @@ class LoginScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, "/register");
               },
-              child: Text("¿No tienes una cuenta? Regístrate"),
+              child: Text(AppStrings.noAccount),
             ),
           ],
         ),

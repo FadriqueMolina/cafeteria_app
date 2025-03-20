@@ -17,10 +17,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
-      routes: {
-        "/login": (context) => LoginScreen(),
-        "/register": (context) => RegisterScreen(),
-      },
+      theme: ThemeData(primarySwatch: Colors.blue),
+      onGenerateRoute:
+          (settings) => switch (settings.name) {
+            "/" => MaterialPageRoute(builder: (context) => LoginScreen()),
+            "/register" => MaterialPageRoute(
+              builder: (context) => RegisterScreen(),
+            ),
+            _ => MaterialPageRoute(builder: (context) => LoginScreen()),
+          },
     );
   }
 }
