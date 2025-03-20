@@ -1,12 +1,20 @@
+import 'package:cafeteria_app/providers/auth_provider.dart';
+import 'package:cafeteria_app/screens/home_screen.dart';
 import 'package:cafeteria_app/screens/login_screen.dart';
 import 'package:cafeteria_app/screens/register_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => AuthProvider())],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,11 +28,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       onGenerateRoute:
           (settings) => switch (settings.name) {
-            "/" => MaterialPageRoute(builder: (context) => LoginScreen()),
-            "/register" => MaterialPageRoute(
-              builder: (context) => RegisterScreen(),
-            ),
-            _ => MaterialPageRoute(builder: (context) => LoginScreen()),
+            "/" => MaterialPageRoute(builder: (_) => LoginScreen()),
+            "/register" => MaterialPageRoute(builder: (_) => RegisterScreen()),
+            "/home" => MaterialPageRoute(builder: (_) => HomeScreen()),
+            _ => MaterialPageRoute(builder: (_) => LoginScreen()),
           },
     );
   }
