@@ -41,7 +41,8 @@ class RegisterScreen extends StatelessWidget {
             //Boton iniciar sesion
             ElevatedButton(
               onPressed: () {
-                if (_passwordController.text == _confirmPasswordController) {
+                if (_passwordController.text ==
+                    _confirmPasswordController.text) {
                   print("Username: ${_emailController.text}");
                   print("Password: ${_passwordController.text}");
                 } else {
