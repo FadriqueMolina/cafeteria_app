@@ -10,6 +10,23 @@ class AuthProvider with ChangeNotifier {
   bool get isAuthenticated => _isAuthenticated;
   String get errorMessage => _errorMessage;
 
+  AuthProvider() {
+    _checkAuthState();
+  }
+
+  Future<void> _checkAuthState() async {
+    _isLoading = false;
+    notifyListeners();
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      _isAuthenticated = true;
+    } else {
+      _isAuthenticated = false;
+    }
+    _isLoading = false;
+    notifyListeners();
+  }
+
   Future<void> login(String email, String password) async {
     _errorMessage = "";
     _isLoading = true;

@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: AuthWrapper(),
       theme: ThemeData(primarySwatch: Colors.blue),
       onGenerateRoute:
           (settings) => switch (settings.name) {
@@ -33,6 +33,27 @@ class MyApp extends StatelessWidget {
             "/home" => MaterialPageRoute(builder: (_) => HomeScreen()),
             _ => MaterialPageRoute(builder: (_) => LoginScreen()),
           },
+    );
+  }
+}
+
+class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<AuthProvider>(
+      builder: (context, authProvider, child) {
+        if (authProvider.isLoading) {
+          return Scaffold(body: Center(child: CircularProgressIndicator()));
+        } else {
+          if (authProvider.isAuthenticated) {
+            return HomeScreen();
+          } else {
+            return LoginScreen();
+          }
+        }
+      },
     );
   }
 }
