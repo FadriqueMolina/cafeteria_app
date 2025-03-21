@@ -42,7 +42,6 @@ class RegisterScreen extends StatelessWidget {
                         return AppStrings.mustEnterValidEmail;
                       }
                       if (!EmailValidator.validate(emailText)) {
-                        // Validar el correo
                         return "Por favor, ingresa un correo electrónico válido.";
                       }
 
@@ -100,6 +99,9 @@ class RegisterScreen extends StatelessWidget {
                                     }
 
                                     if (authProvider.isAuthenticated) {
+                                      _emailController.clear();
+                                      _passwordController.clear();
+                                      _confirmPasswordController.clear();
                                       Navigator.pushReplacementNamed(
                                         context,
                                         "/home",

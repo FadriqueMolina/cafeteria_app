@@ -74,6 +74,8 @@ class LoginScreen extends StatelessWidget {
                                 throw Exception("Ocurrio un error");
                               }
                               if (authProvider.isAuthenticated) {
+                                _emailController.clear();
+                                _passwordController.clear();
                                 Navigator.pushReplacementNamed(
                                   context,
                                   "/home",

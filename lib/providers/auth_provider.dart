@@ -13,6 +13,7 @@ class AuthProvider with ChangeNotifier {
   Future<void> login(String email, String password) async {
     _errorMessage = "";
     _isLoading = true;
+    notifyListeners();
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
@@ -31,6 +32,7 @@ class AuthProvider with ChangeNotifier {
   Future<void> register(String email, String password) async {
     _errorMessage = "";
     _isLoading = true;
+    notifyListeners();
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
@@ -64,6 +66,8 @@ class AuthProvider with ChangeNotifier {
         return "Correo electrónico o contraseña incorrectos.";
       case 'user-not-found':
         return "No existe una cuenta con este correo electrónico.";
+      case "invalid-credential":
+        return "Informancion no valida, por favor verifica tu usuario o password.";
       default:
         return "Ocurrió un error inesperado. Inténtalo de nuevo.";
     }
