@@ -3,6 +3,8 @@ import 'package:cafeteria_app/utils/strings.dart';
 import 'package:cafeteria_app/widgets/my_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:cafeteria_app/utils/helpers.dart';
+import 'package:email_validator/email_validator.dart';
 
 class RegisterScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
@@ -39,6 +41,11 @@ class RegisterScreen extends StatelessWidget {
                       if (emailText == null || emailText.isEmpty) {
                         return AppStrings.mustEnterValidEmail;
                       }
+                      if (!EmailValidator.validate(emailText)) {
+                        // Validar el correo
+                        return "Por favor, ingresa un correo electrónico válido.";
+                      }
+
                       return null;
                     },
                   ),
@@ -133,11 +140,5 @@ class RegisterScreen extends StatelessWidget {
         );
       },
     );
-  }
-
-  void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message)));
   }
 }

@@ -11,6 +11,7 @@ class AuthProvider with ChangeNotifier {
   String get errorMessage => _errorMessage;
 
   Future<void> login(String email, String password) async {
+    _errorMessage = "";
     _isLoading = true;
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -18,9 +19,8 @@ class AuthProvider with ChangeNotifier {
         password: password,
       );
       _isAuthenticated = true;
-      _errorMessage = "";
     } on FirebaseAuthException catch (e) {
-      _errorMessage = e.message ?? "Error al iniciar sesion";
+      _errorMessage = _getErrorMessage(e.code);
       _isAuthenticated = false;
     } finally {
       _isLoading = false;
@@ -29,6 +29,7 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<void> register(String email, String password) async {
+    _errorMessage = "";
     _isLoading = true;
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -36,9 +37,8 @@ class AuthProvider with ChangeNotifier {
         password: password,
       );
       _isAuthenticated = true;
-      _errorMessage = "";
     } on FirebaseAuthException catch (e) {
-      _errorMessage = e.message ?? "Error al registrar al usuario";
+      _errorMessage = _getErrorMessage(e.code);
       _isAuthenticated = false;
     } finally {
       _isLoading = false;
@@ -50,5 +50,22 @@ class AuthProvider with ChangeNotifier {
     await FirebaseAuth.instance.signOut();
     _isAuthenticated = false;
     notifyListeners();
+  }
+
+  String _getErrorMessage(String errorCode) {
+    switch (errorCode) {
+      case 'email-already-in-use':
+        return "El correo electrónico ya está registrado.";
+      case 'weak-password':
+        return "La contraseña debe tener al menos 6 caracteres.";
+      case 'invalid-email':
+        return "El correo electrónico no es válido.";
+      case 'wrong-password':
+        return "Correo electrónico o contraseña incorrectos.";
+      case 'user-not-found':
+        return "No existe una cuenta con este correo electrónico.";
+      default:
+        return "Ocurrió un error inesperado. Inténtalo de nuevo.";
+    }
   }
 }
