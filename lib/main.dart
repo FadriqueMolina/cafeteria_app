@@ -1,10 +1,12 @@
 import 'package:cafeteria_app/providers/auth_provider.dart';
 import 'package:cafeteria_app/screens/home_screen.dart';
 import 'package:cafeteria_app/screens/login_screen.dart';
-import 'package:cafeteria_app/screens/register_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+    GlobalKey<ScaffoldMessengerState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      scaffoldMessengerKey: scaffoldMessengerKey,
       home: AuthWrapper(),
       theme: ThemeData(primarySwatch: Colors.blue),
     );

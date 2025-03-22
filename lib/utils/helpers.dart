@@ -1,5 +1,8 @@
+import 'package:cafeteria_app/main.dart' show scaffoldMessengerKey;
 import 'package:flutter/material.dart';
 
-void showSnackBar(BuildContext context, String message) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+void showGlobalSnackBar(String message) {
+  scaffoldMessengerKey.currentState?.showSnackBar(
+    SnackBar(content: Text(message)),
+  );
 }

@@ -102,10 +102,7 @@ class RegisterScreen extends StatelessWidget {
                                     }
                                   }
                                 } else {
-                                  showSnackBar(
-                                    context,
-                                    AppStrings.passwordError,
-                                  );
+                                  showGlobalSnackBar(authProvider.errorMessage);
                                 }
                               },
                               child: Text(AppStrings.registerButton),

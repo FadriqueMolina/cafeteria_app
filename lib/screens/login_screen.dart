@@ -4,8 +4,8 @@ import 'package:cafeteria_app/utils/strings.dart';
 import 'package:cafeteria_app/widgets/my_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cafeteria_app/utils/helpers.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:cafeteria_app/utils/helpers.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
@@ -75,10 +75,7 @@ class LoginScreen extends StatelessWidget {
                                 _emailController.clear();
                                 _passwordController.clear();
                               } else {
-                                showSnackBar(
-                                  context,
-                                  authProvider.errorMessage,
-                                );
+                                showGlobalSnackBar(authProvider.errorMessage);
                               }
                             }
                           },
