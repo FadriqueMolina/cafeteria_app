@@ -3,30 +3,19 @@ import 'package:flutter/material.dart';
 
 class AuthProvider with ChangeNotifier {
   bool _isLoading = false;
-  bool _isAuthenticated = false;
   String _errorMessage = "";
-  final User? _user = FirebaseAuth.instance.currentUser;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   bool get isLoading => _isLoading;
-  bool get isAuthenticated => _isAuthenticated;
+  bool get isAuthenticated => _auth.currentUser != null;
   String get errorMessage => _errorMessage;
-  String get userName => _user?.displayName?.toString() ?? "";
+  String? get userName => _auth.currentUser?.displayName;
 
   AuthProvider() {
-    _checkAuthState();
-  }
-
-  Future<void> _checkAuthState() async {
-    _isLoading = false;
-    notifyListeners();
-
-    if (_user != null) {
-      _isAuthenticated = true;
-    } else {
-      _isAuthenticated = false;
-    }
-    _isLoading = false;
-    notifyListeners();
+    //Llamar al stream que escucha por los cambios en FirebaseAuth y notificar a la UI por estos cambios
+    _auth.authStateChanges().listen((_) {
+      notifyListeners();
+    });
   }
 
   Future<void> login(String email, String password) async {
@@ -38,10 +27,8 @@ class AuthProvider with ChangeNotifier {
         email: email,
         password: password,
       );
-      _isAuthenticated = true;
     } on FirebaseAuthException catch (e) {
       _errorMessage = _getErrorMessage(e.code);
-      _isAuthenticated = false;
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -57,10 +44,8 @@ class AuthProvider with ChangeNotifier {
         email: email,
         password: password,
       );
-      _isAuthenticated = true;
     } on FirebaseAuthException catch (e) {
       _errorMessage = _getErrorMessage(e.code);
-      _isAuthenticated = false;
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -69,7 +54,6 @@ class AuthProvider with ChangeNotifier {
 
   Future<void> logout() async {
     await FirebaseAuth.instance.signOut();
-    _isAuthenticated = false;
     notifyListeners();
   }
 

@@ -1,4 +1,5 @@
 import 'package:cafeteria_app/providers/auth_provider.dart';
+import 'package:cafeteria_app/screens/register_screen.dart';
 import 'package:cafeteria_app/utils/strings.dart';
 import 'package:cafeteria_app/widgets/my_textfield.dart';
 import 'package:flutter/material.dart';
@@ -70,16 +71,9 @@ class LoginScreen extends StatelessWidget {
                               String email = _emailController.text;
                               String passsword = _passwordController.text;
                               await authProvider.login(email, passsword);
-                              if (!context.mounted) {
-                                throw Exception("Ocurrio un error");
-                              }
                               if (authProvider.isAuthenticated) {
                                 _emailController.clear();
                                 _passwordController.clear();
-                                Navigator.pushReplacementNamed(
-                                  context,
-                                  "/home",
-                                );
                               } else {
                                 showSnackBar(
                                   context,
@@ -98,7 +92,10 @@ class LoginScreen extends StatelessWidget {
               //Texto registrarse
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, "/register");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterScreen()),
+                  );
                 },
                 child: Text(AppStrings.noAccount),
               ),

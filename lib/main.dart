@@ -26,13 +26,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: AuthWrapper(),
       theme: ThemeData(primarySwatch: Colors.blue),
-      onGenerateRoute:
-          (settings) => switch (settings.name) {
-            "/login" => MaterialPageRoute(builder: (_) => LoginScreen()),
-            "/register" => MaterialPageRoute(builder: (_) => RegisterScreen()),
-            "/home" => MaterialPageRoute(builder: (_) => HomeScreen()),
-            _ => MaterialPageRoute(builder: (_) => LoginScreen()),
-          },
     );
   }
 }

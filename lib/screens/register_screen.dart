@@ -94,24 +94,11 @@ class RegisterScreen extends StatelessWidget {
                                       email,
                                       password,
                                     );
-                                    if (!context.mounted) {
-                                      throw Exception("Ocurrio un error");
-                                    }
 
                                     if (authProvider.isAuthenticated) {
                                       _emailController.clear();
                                       _passwordController.clear();
                                       _confirmPasswordController.clear();
-                                      Navigator.pushNamedAndRemoveUntil(
-                                        context,
-                                        "/home",
-                                        (route) => false,
-                                      );
-                                    } else {
-                                      showSnackBar(
-                                        context,
-                                        authProvider.errorMessage,
-                                      );
                                     }
                                   }
                                 } else {
