@@ -102,9 +102,10 @@ class RegisterScreen extends StatelessWidget {
                                       _emailController.clear();
                                       _passwordController.clear();
                                       _confirmPasswordController.clear();
-                                      Navigator.pushReplacementNamed(
+                                      Navigator.pushNamedAndRemoveUntil(
                                         context,
                                         "/home",
+                                        (route) => false,
                                       );
                                     } else {
                                       showSnackBar(

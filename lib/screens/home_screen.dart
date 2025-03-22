@@ -1,8 +1,10 @@
+import 'package:cafeteria_app/providers/auth_provider.dart';
 import 'package:cafeteria_app/screens/information_screen.dart';
 import 'package:cafeteria_app/screens/menu_screen.dart';
 import 'package:cafeteria_app/screens/reservation_screen.dart';
 import 'package:cafeteria_app/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,6 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Consumer<AuthProvider>(
+          builder:
+              (context, authProvider, child) =>
+                  Text("Bienvenido ${authProvider.userName}"),
+        ),
+      ),
       backgroundColor: Colors.white, // Fondo blanco para combinar con el diseño
       body: _screenOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(

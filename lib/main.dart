@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       onGenerateRoute:
           (settings) => switch (settings.name) {
-            "/" => MaterialPageRoute(builder: (_) => LoginScreen()),
+            "/login" => MaterialPageRoute(builder: (_) => LoginScreen()),
             "/register" => MaterialPageRoute(builder: (_) => RegisterScreen()),
             "/home" => MaterialPageRoute(builder: (_) => HomeScreen()),
             _ => MaterialPageRoute(builder: (_) => LoginScreen()),
