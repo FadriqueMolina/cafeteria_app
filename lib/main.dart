@@ -1,6 +1,6 @@
 import 'package:cafeteria_app/providers/auth_provider.dart';
 import 'package:cafeteria_app/screens/home_screen.dart';
-import 'package:cafeteria_app/screens/login_screen.dart';
+import 'package:cafeteria_app/screens/authentication/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: scaffoldMessengerKey,
       home: AuthWrapper(),
-      theme: ThemeData(primarySwatch: Colors.blue),
     );
   }
 }

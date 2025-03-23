@@ -9,7 +9,10 @@ class AuthProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   bool get isAuthenticated => _auth.currentUser != null;
   String get errorMessage => _errorMessage;
-  String? get userName => _auth.currentUser?.displayName;
+  String? get userName =>
+      _auth.currentUser != null && _auth.currentUser!.displayName!.isNotEmpty
+          ? _auth.currentUser?.displayName
+          : "Invitado";
 
   AuthProvider() {
     //Llamar al stream que escucha por los cambios en FirebaseAuth y notificar a la UI por estos cambios

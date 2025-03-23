@@ -1,5 +1,5 @@
 import 'package:cafeteria_app/providers/auth_provider.dart';
-import 'package:cafeteria_app/screens/register_screen.dart';
+import 'package:cafeteria_app/screens/authentication/register_screen.dart';
 import 'package:cafeteria_app/utils/strings.dart';
 import 'package:cafeteria_app/widgets/my_textfield.dart';
 import 'package:flutter/material.dart';

@@ -35,28 +35,43 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Consumer<AuthProvider>(
           builder:
-              (context, authProvider, child) =>
-                  Text("Bienvenido ${authProvider.userName}"),
+              (context, authProvider, child) => Text(
+                "Bienvenido, ${authProvider.userName}",
+                style: TextStyle(
+                  color: Colors.brown[100],
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
         ),
+        backgroundColor: Colors.brown[800],
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notifications, color: Colors.amber),
+            onPressed: () {
+              // Lógica para notificaciones
+            },
+          ),
+        ],
       ),
-      backgroundColor: Colors.white, // Fondo blanco para combinar con el diseño
       body: _screenOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.amber,
+        backgroundColor: Colors.brown[800], // Fondo marrón oscuro
+        type: BottomNavigationBarType.fixed, // Tipo fijo para evitar problemas
+        selectedItemColor: Colors.amber, // Ícono seleccionado en ámbar
+        unselectedItemColor:
+            Colors.brown[100], // Ícono no seleccionado en beige claro
         currentIndex: _selectedIndex,
         onTap: _onTappedItem,
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Menu"),
+          BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Menú"),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
             label: "Reservas",
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.info), label: "Informacion"),
+          BottomNavigationBarItem(icon: Icon(Icons.info), label: "Información"),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: "Configuracion",
+            label: "Configuración",
           ),
         ],
       ),
