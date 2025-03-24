@@ -40,8 +40,6 @@ dependencies:
   email_validator: ^3.0.0
   cloud_firestore: ^5.6.5
   cached_network_image: ^3.4.1
-  flutter_native_splash: ^2.4.5
-  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   flutter_test:
@@ -64,17 +62,6 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
-flutter_native_splash:
-  image: assets/splash_logo.png
-  color: "#FFFFFF"
-  ios: false
-  web: false
-  android: true
-  android_12: 
-    image: assets/splash_logo.png
-    color: "#FFFFFF"
-    icon_background_color: "#FFFFFF"
 
   # To add assets to your application, add an assets section, like this:
 assets:
