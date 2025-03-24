@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Consumer<AuthProvider>(
           builder:
               (context, authProvider, child) => Text(
-                "Bienvenido, ${authProvider.userName}",
+                "Bienvenido",
                 style: TextStyle(
                   color: Colors.brown[100],
                   fontWeight: FontWeight.bold,

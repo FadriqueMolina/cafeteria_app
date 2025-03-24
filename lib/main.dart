@@ -1,4 +1,5 @@
 import 'package:cafeteria_app/providers/auth_provider.dart';
+import 'package:cafeteria_app/providers/product_provider.dart';
 import 'package:cafeteria_app/screens/home_screen.dart';
 import 'package:cafeteria_app/screens/authentication/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,7 +14,10 @@ void main() async {
   await Firebase.initializeApp();
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => AuthProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => ProductProvider()),
+      ],
       child: const MyApp(),
     ),
   );
@@ -37,18 +41,26 @@ class AuthWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthProvider>(
-      builder: (context, authProvider, child) {
-        if (authProvider.isLoading) {
-          return Scaffold(body: Center(child: CircularProgressIndicator()));
-        } else {
-          if (authProvider.isAuthenticated) {
-            return HomeScreen();
-          } else {
-            return LoginScreen();
-          }
-        }
-      },
+    final authProvider = Provider.of<AuthProvider>(context);
+    final productProvider = Provider.of<ProductProvider>(
+      context,
+      listen: false,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (authProvider.isAuthenticated && productProvider.products.isEmpty) {
+        productProvider.loadProducts();
+      }
+    });
+
+    if (authProvider.isLoading) {
+      return Scaffold(body: Center(child: CircularProgressIndicator()));
+    } else {
+      if (authProvider.isAuthenticated) {
+        return HomeScreen();
+      } else {
+        return LoginScreen();
+      }
+    }
   }
 }
