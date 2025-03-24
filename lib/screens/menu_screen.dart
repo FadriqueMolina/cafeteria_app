@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-/*Crearemos un menu screen con una lista central que cargara los productos del provider de productos, los mostrara en una lista de cards con un listtile
-Que llevara la informacion */
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
 
@@ -21,7 +19,6 @@ class MenuScreen extends StatelessWidget {
                 itemCount: productProvider.products.length,
                 itemBuilder: (context, index) {
                   final product = productProvider.products[index];
-                  print(product.imageUrl);
                   return Card(
                     elevation: 4,
                     margin: EdgeInsets.only(bottom: 16),
