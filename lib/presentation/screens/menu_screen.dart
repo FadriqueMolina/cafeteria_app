@@ -1,5 +1,5 @@
-import 'package:cafeteria_app/providers/product_provider.dart';
-import 'package:cafeteria_app/utils/helpers.dart';
+import 'package:cafeteria_app/business/providers/product_provider.dart';
+import 'package:cafeteria_app/core/utils/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';

@@ -1,4 +1,4 @@
-import 'package:cafeteria_app/providers/auth_provider.dart';
+import 'package:cafeteria_app/business/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
