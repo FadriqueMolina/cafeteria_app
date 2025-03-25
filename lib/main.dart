@@ -1,7 +1,7 @@
-import 'package:cafeteria_app/providers/auth_provider.dart';
-import 'package:cafeteria_app/providers/product_provider.dart';
-import 'package:cafeteria_app/screens/home_screen.dart';
-import 'package:cafeteria_app/screens/authentication/login_screen.dart';
+import 'package:cafeteria_app/business/providers/auth_provider.dart';
+import 'package:cafeteria_app/business/providers/product_provider.dart';
+import 'package:cafeteria_app/presentation/screens/home_screen.dart';
+import 'package:cafeteria_app/presentation/screens/authentication/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
