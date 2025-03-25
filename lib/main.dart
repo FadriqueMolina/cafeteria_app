@@ -1,4 +1,5 @@
 import 'package:cafeteria_app/business/providers/auth_provider.dart';
+import 'package:cafeteria_app/business/providers/cart_provider.dart';
 import 'package:cafeteria_app/business/providers/product_provider.dart';
 import 'package:cafeteria_app/presentation/screens/home_screen.dart';
 import 'package:cafeteria_app/presentation/screens/authentication/login_screen.dart';
@@ -17,6 +18,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => ProductProvider()),
+        ChangeNotifierProvider(create: (context) => CartProvider()),
       ],
       child: const MyApp(),
     ),

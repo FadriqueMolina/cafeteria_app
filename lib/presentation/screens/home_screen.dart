@@ -32,27 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Consumer<AuthProvider>(
-          builder:
-              (context, authProvider, child) => Text(
-                "Bienvenido",
-                style: TextStyle(
-                  color: Colors.brown[100],
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-        ),
-        backgroundColor: Colors.brown[800],
-        actions: [
-          IconButton(
-            icon: Icon(Icons.notifications, color: Colors.amber),
-            onPressed: () {
-              // Lógica para notificaciones
-            },
-          ),
-        ],
-      ),
       body: _screenOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.brown[800], // Fondo marrón oscuro
