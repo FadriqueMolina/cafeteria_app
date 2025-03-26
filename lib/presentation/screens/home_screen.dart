@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Colors.brown[100], // Ícono no seleccionado en beige claro
         currentIndex: _selectedIndex,
         onTap: _onTappedItem,
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Menú"),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),

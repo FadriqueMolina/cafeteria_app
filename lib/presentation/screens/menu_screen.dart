@@ -21,7 +21,7 @@ class MenuScreen extends StatelessWidget {
             action: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CartScreen()),
+                MaterialPageRoute(builder: (context) => const CartScreen()),
               );
             },
           ),
@@ -40,9 +40,9 @@ class MenuScreen extends StatelessWidget {
       body: Consumer<ProductProvider>(
         builder: (context, productProvider, child) {
           return productProvider.isLoading
-              ? Center(child: CircularProgressIndicator())
+              ? const Center(child: CircularProgressIndicator())
               : ListView.builder(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 itemCount: productProvider.products.length,
                 itemBuilder: (context, index) {
                   final product = productProvider.products[index];

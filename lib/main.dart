@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: scaffoldMessengerKey,
-      home: AuthWrapper(),
+      home: const AuthWrapper(),
     );
   }
 }
@@ -56,10 +56,10 @@ class AuthWrapper extends StatelessWidget {
     });
 
     if (authProvider.isLoading) {
-      return Scaffold(body: Center(child: CircularProgressIndicator()));
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     } else {
       if (authProvider.isAuthenticated) {
-        return HomeScreen();
+        return const HomeScreen();
       } else {
         return LoginScreen();
       }

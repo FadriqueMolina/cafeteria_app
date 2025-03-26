@@ -25,13 +25,13 @@ class RegisterScreen extends StatelessWidget {
           body: Form(
             key: _formKey,
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //Icono de cafeteria
-                  Icon(Icons.coffee, color: Colors.brown, size: 100),
-                  SizedBox(height: 20),
+                  const Icon(Icons.coffee, color: Colors.brown, size: 100),
+                  const SizedBox(height: 20),
                   //Correo
                   MyTextfield(
                     labelText: AppStrings.emailHint,
@@ -48,7 +48,7 @@ class RegisterScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   //Contraseña
                   MyTextfield(
                     labelText: AppStrings.passwordHint,
@@ -61,7 +61,7 @@ class RegisterScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   //Confirmar contraseña
                   MyTextfield(
                     labelText: AppStrings.confirmPasswordHint,
@@ -74,14 +74,14 @@ class RegisterScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   //Boton iniciar sesion o progress indicator
                   Consumer<AuthProvider>(
                     builder: (context, authProvider, child) {
                       return Column(
                         children: [
                           if (authProvider.isLoading)
-                            CircularProgressIndicator()
+                            const CircularProgressIndicator()
                           else
                             ElevatedButton(
                               onPressed: () async {
@@ -105,20 +105,20 @@ class RegisterScreen extends StatelessWidget {
                                   showGlobalSnackBar(authProvider.errorMessage);
                                 }
                               },
-                              child: Text(AppStrings.registerButton),
+                              child: const Text(AppStrings.registerButton),
                             ),
                         ],
                       );
                     },
                   ),
 
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   //Texto registrarse
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text(AppStrings.haveAccount),
+                    child: const Text(AppStrings.haveAccount),
                   ),
                 ],
               ),

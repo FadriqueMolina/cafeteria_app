@@ -16,12 +16,12 @@ class MenuProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
-      margin: EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16),
       child: ListTile(
         leading: MyCardImage(imageUrl: product.imageUrl),
         title: Text(
           product.name,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
         ),
         subtitle: Text(product.description),
         trailing: Row(
@@ -32,7 +32,7 @@ class MenuProductCard extends StatelessWidget {
               style: TextStyle(color: Colors.brown[600]),
             ),
             IconButton(
-              icon: Icon(Icons.add, color: Colors.amber),
+              icon: const Icon(Icons.add, color: Colors.amber),
               onPressed: addButtonAction,
             ),
           ],

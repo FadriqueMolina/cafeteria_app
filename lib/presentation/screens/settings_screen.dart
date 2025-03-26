@@ -9,19 +9,19 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Configuración"),
+        title: const Text("Configuración"),
         backgroundColor: Colors.blue, // Color del AppBar
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.settings,
               size: 100,
               color: Colors.grey,
             ), // Ícono de configuración
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Consumer<AuthProvider>(
               builder: (context, authProvider, child) {
                 return ElevatedButton(
@@ -31,7 +31,7 @@ class SettingsScreen extends StatelessWidget {
                       Navigator.pushReplacementNamed(context, "/");
                     }
                   },
-                  child: Text("Cerrar sesión"),
+                  child: const Text("Cerrar sesión"),
                 );
               },
             ),

@@ -16,17 +16,17 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text(AppStrings.loginTitle))),
+      appBar: AppBar(title: const Center(child: Text(AppStrings.loginTitle))),
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //Icono de cafeteria (Proximamente lo cambiare a uno animado )
-              Icon(Icons.coffee, color: Colors.brown, size: 100),
-              SizedBox(height: 20),
+              const Icon(Icons.coffee, color: Colors.brown, size: 100),
+              const SizedBox(height: 20),
               //Correo
               MyTextfield(
                 labelText: AppStrings.emailHint,
@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               //Contraseña
               MyTextfield(
                 labelText: AppStrings.passwordHint,
@@ -56,14 +56,14 @@ class LoginScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               //Boton iniciar sesion o indicador de progreso
               Consumer<AuthProvider>(
                 builder: (context, authProvider, child) {
                   return Column(
                     children: [
                       if (authProvider.isLoading)
-                        CircularProgressIndicator()
+                        const CircularProgressIndicator()
                       else
                         ElevatedButton(
                           onPressed: () async {
@@ -79,13 +79,13 @@ class LoginScreen extends StatelessWidget {
                               }
                             }
                           },
-                          child: Text(AppStrings.loginButton),
+                          child: const Text(AppStrings.loginButton),
                         ),
                     ],
                   );
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               //Texto registrarse
               TextButton(
                 onPressed: () {
@@ -94,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => RegisterScreen()),
                   );
                 },
-                child: Text(AppStrings.noAccount),
+                child: const Text(AppStrings.noAccount),
               ),
             ],
           ),

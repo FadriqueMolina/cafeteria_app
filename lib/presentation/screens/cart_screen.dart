@@ -9,12 +9,15 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Carrito de compras"), centerTitle: true),
+      appBar: AppBar(
+        title: const Text("Carrito de compras"),
+        centerTitle: true,
+      ),
 
       body: Consumer<CartProvider>(
         builder: (context, cartProvider, child) {
           if (cartProvider.cartItems.isEmpty) {
-            return Center(child: Text("Tu carrito está vacío"));
+            return const Center(child: Text("Tu carrito está vacío"));
           }
           return Column(
             children: [
@@ -47,14 +50,14 @@ class CartScreen extends StatelessWidget {
 Widget _buildSummary(double total) {
   return Card(
     child: Padding(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("TOTAL:", style: TextStyle(fontWeight: FontWeight.bold)),
+          const Text("TOTAL:", style: TextStyle(fontWeight: FontWeight.bold)),
           Text(
             "\$${total.toStringAsFixed(2)}",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
         ],
       ),

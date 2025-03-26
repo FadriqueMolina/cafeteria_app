@@ -12,8 +12,8 @@ class MyCardImage extends StatelessWidget {
       width: 60,
       height: 60,
       fit: BoxFit.cover,
-      placeholder: (context, url) => CircularProgressIndicator(),
-      errorWidget: (context, url, error) => Icon(Icons.error),
+      placeholder: (context, url) => const CircularProgressIndicator(),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 }

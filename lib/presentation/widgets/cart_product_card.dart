@@ -17,13 +17,13 @@ class CartProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
-      margin: EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16),
       child: ListTile(
         leading: MyCardImage(imageUrl: cartItem.product.imageUrl),
         title: Center(
           child: Text(
             cartItem.product.name,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         subtitle: Center(
@@ -33,15 +33,15 @@ class CartProductCard extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: addItem,
-                icon: Icon(Icons.add, color: Colors.amber),
+                icon: const Icon(Icons.add, color: Colors.amber),
               ),
               Text(
                 cartItem.quantity.toString(),
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               IconButton(
                 onPressed: removeItem,
-                icon: Icon(Icons.remove, color: Colors.amber),
+                icon: const Icon(Icons.remove, color: Colors.amber),
               ),
             ],
           ),
@@ -51,12 +51,12 @@ class CartProductCard extends StatelessWidget {
           children: [
             Text(
               "\$${cartItem.product.price.toStringAsFixed(2)}",
-              style: TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
               "\$${cartItem.subTotal.toStringAsFixed(2)}",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),

@@ -13,7 +13,7 @@ class CartCustomIcon extends StatelessWidget {
         return Stack(
           children: [
             IconButton(
-              icon: Icon(Icons.shopping_cart, color: Colors.amber),
+              icon: const Icon(Icons.shopping_cart, color: Colors.amber),
               onPressed: action,
             ),
             if (cartProvider.cartItems.isNotEmpty)

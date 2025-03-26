@@ -7,19 +7,19 @@ class ReservationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Reservas"),
+        title: const Text("Reservas"),
         backgroundColor: Colors.blue, // Color del AppBar
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.calendar_today,
               size: 100,
               color: Colors.green,
             ), // Ícono de calendario
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               "Sitio en construcción",
               style: TextStyle(

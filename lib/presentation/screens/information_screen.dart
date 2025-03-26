@@ -7,19 +7,19 @@ class InformationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Información"),
+        title: const Text("Información"),
         backgroundColor: Colors.blue, // Color del AppBar
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.info,
               size: 100,
               color: Colors.orange,
             ), // Ícono de información
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               "Sitio en construcción",
               style: TextStyle(
