@@ -6,6 +6,8 @@ class CartProvider with ChangeNotifier {
   final Map<String, CartItem> _cartItems = {};
 
   List<CartItem> get cartItems => _cartItems.values.toList();
+  double get total =>
+      _cartItems.values.fold<double>(0, (acum, toAdd) => acum + toAdd.subTotal);
 
   void addToCart(Product product) {
     String id = product.id;
@@ -19,8 +21,8 @@ class CartProvider with ChangeNotifier {
   }
 
   void removeFromCart(String productId) {
-    if (_cartItems[productId] == null) {
-      throw Exception("El producto no existe en el carrito.");
+    if (!_cartItems.containsKey(productId)) {
+      return;
     }
 
     if (_cartItems[productId]?.quantity == 1) {
@@ -29,6 +31,11 @@ class CartProvider with ChangeNotifier {
       _cartItems[productId]?.decreaseQuantity();
     }
 
+    notifyListeners();
+  }
+
+  void clearCart() {
+    _cartItems.clear();
     notifyListeners();
   }
 }

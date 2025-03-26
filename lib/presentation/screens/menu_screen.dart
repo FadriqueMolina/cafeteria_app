@@ -2,6 +2,7 @@ import 'package:cafeteria_app/business/providers/cart_provider.dart';
 import 'package:cafeteria_app/business/providers/product_provider.dart';
 import 'package:cafeteria_app/core/utils/helpers.dart';
 import 'package:cafeteria_app/presentation/screens/cart_screen.dart';
+import 'package:cafeteria_app/presentation/widgets/cart_custom_icon.dart';
 import 'package:cafeteria_app/presentation/widgets/menu_product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,9 +17,8 @@ class MenuScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart, color: Colors.amber),
-            onPressed: () {
+          CartCustomIcon(
+            action: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => CartScreen()),

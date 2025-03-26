@@ -7,12 +7,15 @@ class CartItem {
   CartItem({required this.product});
 
   int get quantity => _quantity;
+  double get subTotal => _quantity * product.price;
 
   void increaseQuantity() {
     _quantity++;
   }
 
   void decreaseQuantity() {
-    _quantity--;
+    if (_quantity > 1) {
+      _quantity--;
+    }
   }
 }

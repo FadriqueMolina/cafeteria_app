@@ -13,14 +13,12 @@ class CartScreen extends StatelessWidget {
 
       body: Consumer<CartProvider>(
         builder: (context, cartProvider, child) {
-          return cartProvider.cartItems.isEmpty
-              ? Center(
-                child: Text(
-                  "Carrito vacio",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-              )
-              : Center(
+          if (cartProvider.cartItems.isEmpty) {
+            return Center(child: Text("Tu carrito está vacío"));
+          }
+          return Column(
+            children: [
+              Expanded(
                 child: ListView.builder(
                   itemCount: cartProvider.cartItems.length,
                   itemBuilder: (context, index) {
@@ -36,9 +34,30 @@ class CartScreen extends StatelessWidget {
                     );
                   },
                 ),
-              );
+              ),
+              _buildSummary(cartProvider.total),
+            ],
+          );
         },
       ),
     );
   }
+}
+
+Widget _buildSummary(double total) {
+  return Card(
+    child: Padding(
+      padding: EdgeInsets.all(16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text("TOTAL:", style: TextStyle(fontWeight: FontWeight.bold)),
+          Text(
+            "\$${total.toStringAsFixed(2)}",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+        ],
+      ),
+    ),
+  );
 }

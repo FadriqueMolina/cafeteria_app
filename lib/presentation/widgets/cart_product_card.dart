@@ -46,37 +46,17 @@ class CartProductCard extends StatelessWidget {
             ],
           ),
         ),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
+        trailing: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  "Total:",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-                Text(
-                  "Subtotal:",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-              ],
+            Text(
+              "\$${cartItem.product.price.toStringAsFixed(2)}",
+              style: TextStyle(fontSize: 14),
             ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  "\$${cartItem.product.price}",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-                Text(
-                  "\$${cartItem.product.price * cartItem.quantity}",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-              ],
+            SizedBox(height: 4),
+            Text(
+              "\$${cartItem.subTotal.toStringAsFixed(2)}",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
