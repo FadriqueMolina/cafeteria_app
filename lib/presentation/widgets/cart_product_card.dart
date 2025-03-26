@@ -20,21 +20,31 @@ class CartProductCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 16),
       child: ListTile(
         leading: MyCardImage(imageUrl: cartItem.product.imageUrl),
-        title: Text(
-          cartItem.product.name,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        title: Center(
+          child: Text(
+            cartItem.product.name,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
-        subtitle: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(onPressed: addItem, icon: Icon(Icons.add)),
-            Text(
-              cartItem.quantity.toString(),
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            IconButton(onPressed: removeItem, icon: Icon(Icons.remove)),
-          ],
+        subtitle: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                onPressed: addItem,
+                icon: Icon(Icons.add, color: Colors.amber),
+              ),
+              Text(
+                cartItem.quantity.toString(),
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              IconButton(
+                onPressed: removeItem,
+                icon: Icon(Icons.remove, color: Colors.amber),
+              ),
+            ],
+          ),
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,

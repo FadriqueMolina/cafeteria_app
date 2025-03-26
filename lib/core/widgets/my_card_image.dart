@@ -9,8 +9,8 @@ class MyCardImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
-      width: 50,
-      height: 50,
+      width: 60,
+      height: 60,
       fit: BoxFit.cover,
       placeholder: (context, url) => CircularProgressIndicator(),
       errorWidget: (context, url, error) => Icon(Icons.error),

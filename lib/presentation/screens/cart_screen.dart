@@ -24,8 +24,6 @@ class CartScreen extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: cartProvider.cartItems.length,
                   itemBuilder: (context, index) {
-                    //Temporal solo para ver los productos mostrare una  con los productos
-
                     final cartItem = cartProvider.cartItems[index];
                     return CartProductCard(
                       cartItem: cartItem,

@@ -50,7 +50,9 @@ class MenuScreen extends StatelessWidget {
                     product: product,
                     addButtonAction: () {
                       cartProvider.addToCart(product);
-                      showGlobalSnackBar("Producto agregado al carrito");
+                      showGlobalSnackBar(
+                        "Producto ${product.name} agregado al carrito",
+                      );
                     },
                   );
                 },
