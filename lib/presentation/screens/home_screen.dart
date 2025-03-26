@@ -1,10 +1,8 @@
-import 'package:cafeteria_app/business/providers/auth_provider.dart';
 import 'package:cafeteria_app/presentation/screens/information_screen.dart';
 import 'package:cafeteria_app/presentation/screens/menu_screen.dart';
 import 'package:cafeteria_app/presentation/screens/reservation_screen.dart';
 import 'package:cafeteria_app/presentation/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
